@@ -10,6 +10,7 @@ const aboutRoute = "/about";
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
+    <link rel="stylesheet" href="/src/styles/global.css" />
   </head>
   <body>
     <nav>
@@ -20,10 +21,4 @@ const aboutRoute = "/about";
     </nav>
     <slot />
   </body>
-
-  <style>
-    h1 {
-      color: red;
-    }
-  </style>
 </html>
