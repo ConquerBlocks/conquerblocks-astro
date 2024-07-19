@@ -1,0 +1,38 @@
+---
+export const getStaticPaths = () => {
+  const pages = [
+    {
+      title: "my-movie",
+      director: "Pedro Plasencia",
+      year: "2024",
+      pageTitle: "My movie",
+    },
+    {
+      title: "lord-of-the-rings",
+      director: "Pedro Plasencia",
+      year: "2024",
+      pageTitle: "The lord of the rings",
+    },
+  ];
+
+  return pages.map(({ title, director, year, pageTitle }) => {
+    return {
+      params: { title },
+      props: { director, year, pageTitle },
+    };
+  });
+};
+
+const { director, year } = Astro.props;
+const { title } = Astro.params;
+---
+
+<h1>{title}</h1>
+<p>
+  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus dolorum nemo
+  asperiores accusantium voluptates. Molestias quaerat cum voluptatum! Nulla
+  quis repellat debitis iste laboriosam voluptatem eius similique iusto ratione
+  voluptatibus?
+</p>
+<p>Director: {director}</p>
+<p>Year: {year}</p>

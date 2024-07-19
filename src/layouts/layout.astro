@@ -1,6 +1,9 @@
 ---
+import { getStaticPaths } from "../pages/movies/[...title].astro";
 const { pageTitle } = Astro.props;
 const aboutRoute = "/about";
+
+const allPages = getStaticPaths();
 ---
 
 <html lang="en">
@@ -16,6 +19,15 @@ const aboutRoute = "/about";
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href={aboutRoute}>About</a></li>
+        {
+          allPages.map((movie) => {
+            return (
+              <li>
+                <a href=`/movies/${movie.params.title}`>{movie.props.pageTitle}</a>
+              </li>
+            );
+          })
+        }
       </ul>
     </nav>
     <slot />

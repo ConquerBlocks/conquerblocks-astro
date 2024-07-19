@@ -1,0 +1,25 @@
+---
+import type { GetStaticPaths } from "astro";
+import Layout from "../../layouts/layout.astro";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const jediData = [
+    { jedi: "Obi-wan Kenobi" },
+    { jedi: "Yoda" },
+    { jedi: "Mace Windu" },
+    { jedi: "Anakin Skywalker" },
+  ];
+
+  return paginate(jediData, { pageSize: 2 });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+
+<Layout>
+  <h1>Página: {page.currentPage}</h1>
+
+  <ul>
+    {page.data.map(({ jedi }) => <li>{jedi}</li>)}
+  </ul>
+</Layout>

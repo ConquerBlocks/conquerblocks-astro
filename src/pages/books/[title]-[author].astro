@@ -1,0 +1,31 @@
+---
+import type { GetStaticPaths } from "astro";
+import { GET } from "../api/bookList.json";
+
+export const getStaticPaths = (() => {
+  return [
+    { params: { title: "test", author: "Pedro" } },
+    { params: { title: "Harry Potter", author: "Luis" } },
+    { params: { title: "Mil y una noches", author: "Maria" } },
+  ];
+}) satisfies GetStaticPaths;
+
+const response = await GET(Astro);
+const bookList = await response.json();
+
+const { author, title } = Astro.params;
+---
+
+<h1>{title}</h1>
+<p>
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam vero minima
+  corrupti, temporibus quaerat veritatis iusto modi voluptas velit quidem natus
+  unde assumenda, eveniet facilis harum illo quam hic magnam.
+</p>
+
+<h2>Book list:</h2>
+<ul>
+  {bookList.map((book) => <li>{book.title}</li>)}
+</ul>
+
+<p>Author: {author}</p>

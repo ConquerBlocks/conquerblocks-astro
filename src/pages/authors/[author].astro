@@ -1,0 +1,25 @@
+---
+import type { GetStaticPaths } from "astro";
+import { GET } from "../api/placeholder";
+
+let response = await GET(Astro);
+const data = await response.json();
+
+export const getStaticPaths = (() => {
+  return [
+    { params: { author: "Pedro" } },
+    { params: { author: "Luis" } },
+    { params: { author: "Maria" } },
+  ];
+}) satisfies GetStaticPaths;
+
+const { author } = Astro.params;
+---
+
+<p>
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam vero minima
+  corrupti, temporibus quaerat veritatis iusto modi voluptas velit quidem natus
+  unde assumenda, eveniet facilis harum illo quam hic magnam.
+</p>
+<p>{data.greeting}</p>
+<p>Author: {author}</p>
