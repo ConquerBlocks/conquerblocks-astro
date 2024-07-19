@@ -1,7 +1,11 @@
 ---
-import { getStaticPaths } from "../pages/movies/[...title].astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { getStaticPaths } from "../pages/en/movies/[...title].astro";
 const { pageTitle } = Astro.props;
-const aboutRoute = "/about";
+
+const currentLocale = Astro.currentLocale;
+const aboutRoute = getRelativeLocaleUrl(currentLocale, "/about");
+
 
 const allPages = getStaticPaths();
 ---
@@ -17,7 +21,7 @@ const allPages = getStaticPaths();
   <body>
     <nav>
       <ul>
-        <li><a href="/">Home</a></li>
+        <li><a href="/es/">Home</a></li>
         <li><a href={aboutRoute}>About</a></li>
         {
           allPages.map((movie) => {

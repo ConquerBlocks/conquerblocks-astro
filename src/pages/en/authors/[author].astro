@@ -1,6 +1,6 @@
 ---
 import type { GetStaticPaths } from "astro";
-import { GET } from "../api/placeholder";
+import { GET } from "../../api/placeholder";
 
 let response = await GET(Astro);
 const data = await response.json();
