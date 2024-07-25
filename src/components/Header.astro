@@ -1,0 +1,50 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const { title } = Astro.props;
+const currentLang = Astro.currentLocale;
+const links = {
+  es: [
+    { link: getRelativeLocaleUrl(currentLang, "/"), linkText: "Inicio" },
+    {
+      link: getRelativeLocaleUrl(currentLang, "/about"),
+      linkText: "Acerca de",
+    },
+    { link: getRelativeLocaleUrl(currentLang, "/blog"), linkText: "Blog" },
+    { link: "/en/", linkText: "Inglés" },
+  ],
+  en: [
+    { link: getRelativeLocaleUrl(currentLang, "/"), linkText: "Home" },
+    { link: getRelativeLocaleUrl(currentLang, "/about"), linkText: "About" },
+    { link: getRelativeLocaleUrl(currentLang, "/blog"), linkText: "Blog" },
+    { link: "/es/", linkText: "Spanish" },
+  ],
+};
+---
+
+<header>
+  <h1>{title}</h1>
+  <nav>
+    {
+      links[currentLang].map((item) => {
+        return <a href={item.link}>{item.linkText}</a>;
+      })
+    }
+  </nav>
+</header>
+
+<style>
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #333;
+    color: #fff;
+  }
+  header nav a {
+    margin: 0 1rem;
+    color: #fff;
+    text-decoration: none;
+  }
+</style>

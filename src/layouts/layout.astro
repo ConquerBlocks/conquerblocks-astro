@@ -1,29 +1,32 @@
 ---
-const { pageTitle } = Astro.props;
-const aboutRoute = "/about";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+
+const { title } = Astro.props;
+const lang = Astro.currentLocale;
 ---
 
-<html lang="en">
+<!doctype html>
+<html lang={lang}>
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{pageTitle}</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
   </head>
   <body>
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href={aboutRoute}>About</a></li>
-      </ul>
-    </nav>
-    <slot />
+    <Header />
+    <main class="main-content">
+      <slot />
+    </main>
+    <Footer />
   </body>
-
-  <style>
-    h1 {
-      color: red;
-    }
-  </style>
 </html>
+
+<style>
+  .main-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+</style>
