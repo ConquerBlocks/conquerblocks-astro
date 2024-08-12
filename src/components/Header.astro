@@ -26,7 +26,7 @@ const links = {
   <h1>{title}</h1>
   <nav>
     {
-      links[currentLang].map((item) => {
+      links[currentLang].map((item: { link: string; linkText: string }) => {
         return <a href={item.link}>{item.linkText}</a>;
       })
     }
