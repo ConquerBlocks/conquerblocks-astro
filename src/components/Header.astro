@@ -11,13 +11,13 @@ const links = {
       linkText: "Acerca de",
     },
     { link: getRelativeLocaleUrl(currentLang, "/blog"), linkText: "Blog" },
-    { link: "/en/", linkText: "Inglés" },
+    { link: getRelativeLocaleUrl("en", "/"), linkText: "Inglés" },
   ],
   en: [
     { link: getRelativeLocaleUrl(currentLang, "/"), linkText: "Home" },
     { link: getRelativeLocaleUrl(currentLang, "/about"), linkText: "About" },
     { link: getRelativeLocaleUrl(currentLang, "/blog"), linkText: "Blog" },
-    { link: "/es/", linkText: "Spanish" },
+    { link: getRelativeLocaleUrl("es", "/"), linkText: "Spanish" },
   ],
 };
 ---
