@@ -1,11 +1,12 @@
 ---
+import { getRelativeLocaleUrl } from "astro:i18n";
 const currentLang = Astro.currentLocale;
 const { slug, title, excerpt } = Astro.props;
 ---
 
 <article class="post-card">
   <h2>
-    <a href={`/${currentLang}/blog/${slug}`}>{title}</a>
+    <a href={getRelativeLocaleUrl(currentLang, `/blog/${slug}`)}>{title}</a>
   </h2>
   <p>{excerpt}</p>
 </article>
